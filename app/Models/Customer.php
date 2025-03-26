@@ -8,9 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Customer extends Model
 {
     use HasFactory;
-
-    // กำหนดชื่อของตารางที่ใช้
     protected $table = 'tbCustomer';
+    protected $primaryKey = 'CustomerID';
+    public $incrementing = false;  // ปิดการใช้ auto-increment
+    protected $keyType = 'string'; // ระบุว่าเป็น string เพื่อใช้ UUID
 
     // กำหนดฟิลด์ที่สามารถกรอกข้อมูลได้
     protected $fillable = [
