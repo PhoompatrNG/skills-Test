@@ -34,6 +34,7 @@
 
 5. **นำเข้าไฟล์ฐานข้อมูล**
    - ไฟล์ฐานข้อมูล `dtb.sql` อยู่ในโปรเจกต์
+   - htdocs\skills-Test\DB
    - ใช้คำสั่งต่อไปนี้เพื่อนำเข้าไปยัง MySQL:
      ```sh
      mysql -u your_database_user -p your_database_name < dtb.sql
