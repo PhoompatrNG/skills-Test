@@ -12,7 +12,13 @@
 <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h2>รายชื่อลูกค้า</h2>
-        <a href="{{ route('add') }}" class="btn btn-primary">+ เพิ่มลูกค้า</a>
+        <div>
+            <a href="{{ route('add') }}" class="btn btn-primary me-2">+ เพิ่มลูกค้า</a>
+            <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                @csrf
+                <button type="submit" class="btn btn-danger">Logout</button>
+            </form>
+        </div>
     </div>
 
     <table class="table table-hover table-bordered">

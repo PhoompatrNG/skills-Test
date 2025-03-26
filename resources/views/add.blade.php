@@ -16,7 +16,7 @@
                     <i class="bi bi-arrow-left"></i> ย้อนกลับ
                 </a>
                 <h4 class="mb-0">{{ $Customer ? 'แก้ไขข้อมูลลูกค้า' : 'เพิ่มลูกค้าใหม่' }}</h4>
-                <span></span> <!-- ใช้เพื่อให้ h4 อยู่ตรงกลาง -->
+                <span></span>
             </div>
             <div class="card-body">
                 <form action="{{ route('customer.store') }}" method="POST">
