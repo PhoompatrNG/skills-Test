@@ -11,8 +11,12 @@
 
     <div class="container mt-5">
         <div class="card shadow">
-            <div class="card-header bg-success text-white text-center">
-                <h4>{{ $Customer ? 'แก้ไขข้อมูลลูกค้า' : 'เพิ่มลูกค้าใหม่' }}</h4>
+            <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
+                <a href="{{ route('home') }}" class="text-white text-decoration-none">
+                    <i class="bi bi-arrow-left"></i> ย้อนกลับ
+                </a>
+                <h4 class="mb-0">{{ $Customer ? 'แก้ไขข้อมูลลูกค้า' : 'เพิ่มลูกค้าใหม่' }}</h4>
+                <span></span> <!-- ใช้เพื่อให้ h4 อยู่ตรงกลาง -->
             </div>
             <div class="card-body">
                 <form action="{{ route('customer.store') }}" method="POST">
