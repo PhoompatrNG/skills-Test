@@ -33,21 +33,22 @@
             margin-bottom: 20px;
         }
 
-        .form-group label {
-            font-size: 16px;
-            color: #333;
-            margin-bottom: 5px;
-            display: block;
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+            width: 100%;
         }
 
+        .form-group input,
         .form-group select,
-        .form-group input {
+        .form-group textarea {
             width: 100%;
             padding: 10px;
-            font-size: 14px;
-            border-radius: 5px;
             border: 1px solid #ccc;
-            background-color: #f9f9f9;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box; /* ป้องกันไม่ให้เกินขอบ */
         }
 
         .form-group select:focus,
@@ -176,7 +177,7 @@
 
             <!-- Submit Button -->
             <div class="form-group">
-                <button type="submit">Submit</button>
+                <button type="submit">บันทึก</button>
             </div>
         </form>
     </div>
