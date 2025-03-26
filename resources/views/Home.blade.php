@@ -98,6 +98,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th>#</th>
                     <th>Prefix</th>
                     <th>First Name</th>
                     <th>Last Name</th>
@@ -106,13 +107,13 @@
                     <th>Birth Date</th>
                     <th>Customer Size</th>
                     <th>Customer Grade</th>
-                    <th>Age</th>
                     <th>Actions</th> <!-- คอลัมน์สำหรับปุ่มแก้ไขและลบ -->
                 </tr>
             </thead>
             <tbody>
-                @foreach($Customer as $customer)
+                @foreach($Customer as $index => $customer)
                 <tr>
+                    <td>{{ $index + 1 }}</td>
                     <td>{{ $customer->Prefix }}</td>
                     <td>{{ $customer->FName }}</td>
                     <td>{{ $customer->LName }}</td>
@@ -121,7 +122,6 @@
                     <td>{{ $customer->BirthDate }}</td>
                     <td>{{ $customer->CustomerSize }}</td>
                     <td>{{ $customer->CustomerGrade }}</td>
-                    <td>{{ $customer->Age }}</td>
                     <td>
                         <!-- ปุ่มแก้ไข -->
                         <a href="{{ route('customer.edit', $customer->CustomerID) }}" class="btn btn-warning btn-sm">แก้ไข</a>
