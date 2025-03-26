@@ -1,150 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>กรอกข้อมูลผู้ใช้</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-
-        .info-form {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            width: 600px;
-            max-width: 100%;
-        }
-
-        .info-form table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .info-form table, .info-form th, .info-form td {
-            border: 1px solid #ccc;
-        }
-
-        .info-form th, .info-form td {
-            padding: 10px;
-            text-align: left;
-        }
-
-        .info-form th {
-            background-color: #f7f7f7;
-        }
-
-        .info-form input[type="text"],
-        .info-form input[type="date"],
-        .info-form input[type="number"],
-        .info-form input[type="password"] {
-            width: calc(100% - 20px);
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            margin-bottom: 10px;
-        }
-
-        .info-form button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 20px; /* เพิ่มระยะห่างด้านบน */
-            display: block;
-            width: 100%;
-        }
-
-        .info-form button:hover {
-            background-color: #45a049;
-        }
-
-        .error-message {
-            color: red;
-            font-size: 0.9em;
-        }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    <div class="info-form">
-        <h2>กรอกข้อมูลผู้ใช้</h2>
-        @if ($errors->any())
-            <div class="error-message">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
+<body class="bg-light d-flex justify-content-center align-items-center vh-100">
+
+    <div class="container">
+        <div class="card shadow mx-auto" style="max-width: 700px;">
+            <div class="card-header bg-success text-white text-center">
+                <h4>กรอกข้อมูลผู้ใช้</h4>
             </div>
-        @endif
-        <form action="{{ route('register') }}" method="POST">
-            @csrf
-            <table>
-                <tr>
-                    <th>ชื่อ</th>
-                    <td><input type="text" name="firstname" value="{{ old('firstname') }}" required></td>
-                    <th>นามสกุล</th>
-                    <td><input type="text" name="lastname" value="{{ old('lastname') }}" required></td>
-                </tr>
-                <tr>
-                    <th>วัน เดือน ปี เกิด</th>
-                    <td><input type="date" id="birthdate" name="birthdate" value="{{ old('birthdate') }}" required></td>
-                    <th>รหัสประจำตัวประชาชน</th>
-                    <td><input type="text" name="idcard" value="{{ old('idcard') }}" required></td>
-                </tr>
-                <tr>
-                    <th>ที่อยู่</th>
-                    <td><input type="text" name="address" value="{{ old('address') }}" required></td>
-                    <th>โทร.</th>
-                    <td><input type="text" name="phone" value="{{ old('phone') }}" required></td>
-                </tr>
-                <tr>
-                    <th>อายุ</th>
-                    <td colspan="3"><input type="number" id="age" name="age" value="{{ old('age') }}" required readonly></td>
-                </tr>
-                <tr>
-                    <th>Username</th>
-                    <td colspan="3"><input type="text" name="username" value="{{ old('username') }}" required></td>
-                </tr>
-                <tr>
-                    <th>Password</th>
-                    <td colspan="3"><input type="password" name="password" required></td>
-                </tr>
-            </table>
-            <button type="submit">Submit</button>
-        </form>
-        <a href="{{ route('login.form') }}" style="text-align: center">เข้าสู่ระบบ</a>
-        @include('error')
+            <div class="card-body">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul class="mb-0">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                <form action="{{ route('register') }}" method="POST">
+                    @csrf
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">ชื่อ:</label>
+                            <input type="text" name="firstname" class="form-control" value="{{ old('firstname') }}" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">นามสกุล:</label>
+                            <input type="text" name="lastname" class="form-control" value="{{ old('lastname') }}" required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">วัน เดือน ปี เกิด:</label>
+                            <input type="date" id="birthdate" name="birthdate" class="form-control" value="{{ old('birthdate') }}" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">รหัสประจำตัวประชาชน:</label>
+                            <input type="text" name="idcard" class="form-control" maxlength="13" value="{{ old('idcard') }}" required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">ที่อยู่:</label>
+                            <input type="text" name="address" class="form-control" value="{{ old('address') }}" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">โทรศัพท์:</label>
+                            <input type="text" name="phone" class="form-control" value="{{ old('phone') }}" required>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">อายุ:</label>
+                        <input type="number" id="age" name="age" class="form-control" value="{{ old('age') }}" required readonly>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Username:</label>
+                        <input type="text" name="username" class="form-control" value="{{ old('username') }}" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Password:</label>
+                        <input type="password" name="password" class="form-control" required>
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-success">ลงทะเบียน</button>
+                    </div>
+                </form>
+
+                <div class="text-center mt-3">
+                    <a href="{{ route('login.form') }}">เข้าสู่ระบบ</a>
+                </div>
+                @include('error')
+            </div>
+        </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('birthdate').addEventListener('input', function() {
+            var birthdate = this.value;
+            var age = calculateAge(birthdate);
+            document.getElementById('age').value = age;
+        });
+
+        function calculateAge(birthdate) {
+            var today = new Date();
+            var birthDate = new Date(birthdate);
+            var age = today.getFullYear() - birthDate.getFullYear();
+            var m = today.getMonth() - birthDate.getMonth();
+            if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            return age;
+        }
+    </script>
 </body>
 </html>
-<script>
-    // เมื่อมีการใส่ข้อมูลในช่อง input ของวันเกิด
-    document.getElementById('birthdate').addEventListener('input', function() {
-        var birthdate = this.value;
-        var age = calculateAge(birthdate); // เรียกฟังก์ชัน calculateAge เพื่อคำนวณอายุ
-        document.getElementById('age').value = age; // แสดงผลลัพธ์ที่ได้ใน input ช่องอายุ
-    });
-
-    // ฟังก์ชันคำนวณอายุ
-    function calculateAge(birthdate) {
-        var today = new Date();
-        var birthDate = new Date(birthdate);
-        var age = today.getFullYear() - birthDate.getFullYear();
-        var m = today.getMonth() - birthDate.getMonth();
-        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-            age--;
-        }
-        return age;
-    }
-</script>
