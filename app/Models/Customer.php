@@ -39,5 +39,10 @@ class Customer extends Model
     {
         return $this->belongsTo(Customer::class, 'ParentCustomerID');
     }
-}
 
+    // กำหนดให้ใช้ 'CustomerID' แทน 'id' สำหรับการค้นหา
+    public function getKeyName()
+    {
+        return 'CustomerID';
+    }
+}

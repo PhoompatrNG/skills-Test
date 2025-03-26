@@ -83,6 +83,33 @@ class Controller extends BaseController
         ];
         return view('add', $data); // ส่งข้อมูลผู้ใช้ไปยัง Blade Template
     }
+
+    public function showRegistrationForm()
+    {
+        return view('Registe');
+    }
+
+    protected function create(array $data)
+    {
+        return User::create([
+            'firstname' => $data['firstname'],
+            'lastname' => $data['lastname'],
+            'birthdate' => $data['birthdate'],
+            'idcard' => $data['idcard'],
+            'address' => $data['address'],
+            'phone' => $data['phone'],
+            'age' => $data['age'],
+            'username' => $data['username'],
+            'password' => Hash::make($data['password']),
+        ]);
+    }
+
+    public function register(Request $request)
+    {
+        $user = $this->create($request->all());
+        return redirect()->route('login.form')->with('success', 'Registration successful!');
+    }
+
     public function store(Request $request)
     {
         // Validate the incoming data
@@ -98,8 +125,7 @@ class Controller extends BaseController
         ]);
         // dd($request->CustomerID);
 
-        $Customer = Customer::where('CustomerID', $request->CustomerID)->first();
-
+        $Customer = Customer::find($request->CustomerID);
         if ($Customer) {
             // หากพบลูกค้าแล้ว, ทำการอัปเดตข้อมูล
             $Customer->IDCard = $request->idcard;
