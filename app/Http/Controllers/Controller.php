@@ -73,13 +73,13 @@ class Controller extends BaseController
     public function add(Request $request)
     {
         $path = $request->path();
-        if ($path ) {
+        if ($path && $path != 'add') {
             $lastSegment = last(explode('/', $path));
+            $Customer = Customer::where('CustomerID',$lastSegment)->first();
         }
-        $Customer = Customer::where('CustomerID',$lastSegment)->first();
         $data = [
-            'Customer' => $Customer,
-            'lastSegment' => $lastSegment,
+            'Customer' => $Customer ?? null,
+            'lastSegment' => $lastSegment ?? null,
         ];
         return view('add', $data); // ส่งข้อมูลผู้ใช้ไปยัง Blade Template
     }

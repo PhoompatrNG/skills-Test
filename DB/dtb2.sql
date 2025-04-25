@@ -7,9 +7,9 @@
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
--- SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
--- START TRANSACTION;
--- SET time_zone = "+00:00";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -18,7 +18,7 @@
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `dtb`
+-- Database: "dtb"
 --
 
 -- --------------------------------------------------------
@@ -28,9 +28,9 @@
 --
 
 CREATE TABLE "migrations" (
-  `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) NOT NULL,
-  `batch` int(11) NOT NULL
+  "id" int(10) UNSIGNED NOT NULL,
+  "migration" varchar(255) NOT NULL,
+  "batch" int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -40,28 +40,28 @@ CREATE TABLE "migrations" (
 --
 
 CREATE TABLE "tbcustomer" (
-  `CustomerID` char(36) NOT NULL,
-  `ParentCustomerID` char(36) DEFAULT NULL,
-  `IDCard` varchar(20) NOT NULL,
-  `Prefix` varchar(10) NOT NULL,
-  `FName` varchar(50) NOT NULL,
-  `LName` varchar(50) NOT NULL,
-  `Address` text DEFAULT NULL,
-  `Gender` char(1) DEFAULT NULL CHECK (`Gender` in ('M','F')),
-  `BirthDate` date DEFAULT NULL,
-  `CustomerSize` enum('S','M','B') NOT NULL,
-  `CustomerGrade` enum('A','B','C','D') NOT NULL,
-  `CreateBy` varchar(50) NOT NULL,
-  `CreateDate` datetime DEFAULT current_timestamp(),
-  `UpdateBy` varchar(50) NOT NULL,
-  `UpdateDate` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  "CustomerID" char(36) NOT NULL,
+  "ParentCustomerID" char(36) DEFAULT NULL,
+  "IDCard" varchar(20) NOT NULL,
+  "Prefix" varchar(10) NOT NULL,
+  "FName" varchar(50) NOT NULL,
+  "LName" varchar(50) NOT NULL,
+  "Address" text DEFAULT NULL,
+  "Gender" char(1) DEFAULT NULL CHECK ("Gender" in ('M','F')),
+  "BirthDate" date DEFAULT NULL,
+  "CustomerSize" enum('S','M','B') NOT NULL,
+  "CustomerGrade" enum('A','B','C','D') NOT NULL,
+  "CreateBy" varchar(50) NOT NULL,
+  "CreateDate" datetime DEFAULT current_timestamp(),
+  "UpdateBy" varchar(50) NOT NULL,
+  "UpdateDate" datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table "tbcustomer"
 --
 
-INSERT INTO "tbcustomer" (`CustomerID`, `ParentCustomerID`, `IDCard`, `Prefix`, `FName`, `LName`, `Address`, `Gender`, `BirthDate`, `CustomerSize`, `CustomerGrade`, `CreateBy`, `CreateDate`, `UpdateBy`, `UpdateDate`) VALUES
+INSERT INTO "tbcustomer" ("CustomerID", "ParentCustomerID", "IDCard", "Prefix", "FName", "LName", "Address", "Gender", "BirthDate", "CustomerSize", "CustomerGrade", "CreateBy", "CreateDate", "UpdateBy", "UpdateDate") VALUES
 ('7b239637-b718-41fe-9de0-94526a316eb3', NULL, '0001', 'Mrs.', '0001', '001', '001', 'M', '2025-03-12', 'S', 'A', 'AD', '2025-03-26 18:45:06', 'AD', '2025-03-26 18:45:41'),
 ('ed629dbc-0a18-11f0-bcd8-00d8619d83b3', NULL, '12345678903', 'Mr.', 'James', 'Johnson', '789 Oak St', 'M', '1990-03-20', 'M', 'C', 'Admin', '2025-03-26 15:04:22', 'Admin', '2025-03-26 15:04:22'),
 ('ed629e04-0a18-11f0-bcd8-00d8619d83b3', NULL, '12345678904', 'Mr.', 'David', 'Williams', '321 Pine St', 'M', '1975-04-10', 'M', 'A', 'Admin', '2025-03-26 15:04:22', 'Admin', '2025-03-26 15:04:22'),
@@ -90,25 +90,25 @@ INSERT INTO "tbcustomer" (`CustomerID`, `ParentCustomerID`, `IDCard`, `Prefix`, 
 --
 
 CREATE TABLE "users" (
-  `id` int(11) NOT NULL,
-  `firstname` varchar(255) NOT NULL,
-  `lastname` varchar(255) NOT NULL,
-  `birthdate` date NOT NULL,
-  `idcard` varchar(13) NOT NULL,
-  `address` varchar(255) NOT NULL,
-  `phone` varchar(10) NOT NULL,
-  `age` int(11) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  "id" int(11) NOT NULL,
+  "firstname" varchar(255) NOT NULL,
+  "lastname" varchar(255) NOT NULL,
+  "birthdate" date NOT NULL,
+  "idcard" varchar(13) NOT NULL,
+  "address" varchar(255) NOT NULL,
+  "phone" varchar(10) NOT NULL,
+  "age" int(11) NOT NULL,
+  "username" varchar(255) NOT NULL,
+  "password" varchar(255) NOT NULL,
+  "created_at" timestamp NOT NULL DEFAULT current_timestamp(),
+  "updated_at" timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table "users"
 --
 
-INSERT INTO "users"` (`id`, `firstname`, `lastname`, `birthdate`, `idcard`, `address`, `phone`, `age`, `username`, `password`, `created_at`, `updated_at`) VALUES
+INSERT INTO "users"" ("id", "firstname", "lastname", "birthdate", "idcard", "address", "phone", "age", "username", "password", "created_at", "updated_at") VALUES
 (1, 'q', 'q', '2024-07-02', 'q', '1', 'q', 1, 'admin', '$2y$10$LWWMeZgSBTwinTnUpyotvO5frrGm.eB.AdmfAn.4dT.zAdscU5gPW', '2024-07-12 21:32:56', '2024-07-12 21:32:56'),
 (4, 'phoompat', 'sawangkaew', '2024-07-11', '123', '321', '312', 12, 'admin0', '$2y$10$4nB80PZMU.eB.5TN1sdiJuYuYxNwAFTinfFh12.th44r7zLaDLEJO', '2024-07-12 21:37:59', '2024-07-12 21:37:59'),
 (5, 'phoompat', 'sawangkaew', '2024-07-02', '1', '1', '1', 1, 'Bas0', '$2y$10$XaX6xuVYC4SZ1v1QB3f.Sut.CgEuDLiYFcgc6fCzBEwF1TnkkRlie', '2024-07-12 22:13:21', '2024-07-12 22:13:21'),
@@ -126,21 +126,21 @@ INSERT INTO "users"` (`id`, `firstname`, `lastname`, `birthdate`, `idcard`, `add
 -- Indexes for table "migrations"
 --
 ALTER TABLE "migrations"
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY ("id");
 
 --
 -- Indexes for table "tbcustomer"
 --
 ALTER TABLE "tbcustomer"
-  ADD PRIMARY KEY (`CustomerID`);
+  ADD PRIMARY KEY ("CustomerID");
 
 --
 -- Indexes for table "users"
 --
 ALTER TABLE "users"
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `idcard` (`idcard`),
-  ADD UNIQUE KEY `username` (`username`);
+  ADD PRIMARY KEY ("id"),
+  ADD UNIQUE KEY "idcard" ("idcard"),
+  ADD UNIQUE KEY "username" ("username");
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -150,13 +150,13 @@ ALTER TABLE "users"
 -- AUTO_INCREMENT for table "migrations"
 --
 ALTER TABLE "migrations"
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY "id" int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table "users"
 --
 ALTER TABLE "users"
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY "id" int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
